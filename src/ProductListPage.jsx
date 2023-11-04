@@ -21,7 +21,7 @@ const ProductListPage = () => {
   useEffect(() => {
    
     const fetchData = async () => {
-     const product = await axios.post("http://localhost:3000/api/products",{category:selectedCategory,sort:selectedSort,page,lower,higher,brands} )
+     const product = await axios.post("https://ecomm-backend-murex.vercel.app/api/products",{category:selectedCategory,sort:selectedSort,page,lower,higher,brands} )
      console.log(product)
      setProducts(product.data)
     };
