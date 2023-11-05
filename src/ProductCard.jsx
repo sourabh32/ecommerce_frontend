@@ -9,8 +9,8 @@ const ProductCard = ({ product }) => {
     whileInView={{ opacity: 1, scale: 1 }}
     
     transition={{ duration: 0.5 }}
-    className="bg-white font-custom  rounded-lg overflow-hidden shadow-md border border-gray-200">
-      <img  src={product.image} alt={product.description} className="w-full  object-cover hover:scale-110 transition-transform duration-300" />
+    className="bg-white font-custom  rounded-sm overflow-hidden ">
+      <img loading='lazy'  src={product.image} alt={product.description} className="w-full   object-cover hover:scale-105 transition-transform duration-300" />
       <div className="p-4">
         <h3 className="text-xl font-semibold mb-2 text-gray-800">{product.description}</h3>
         <div className='flex gap-2'>

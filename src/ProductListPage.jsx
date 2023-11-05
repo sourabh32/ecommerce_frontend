@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductDisplay from './ProductDisplay';
 import axios from 'axios';
 import ProductFilter from './components/ProductFilter';
+import Spinner from './components/Spinner';
 
 
 
@@ -9,7 +10,7 @@ import ProductFilter from './components/ProductFilter';
 const ProductListPage = () => {
  
   const [products, setProducts] = useState([]);
-
+const [loading,setLoading] = useState(false)
   const [brands,setBrands] = useState([])
   const [lower,setLower] = useState(50)
   const [higher,setHigher] = useState(100)
@@ -21,9 +22,11 @@ const ProductListPage = () => {
   useEffect(() => {
    
     const fetchData = async () => {
+      setLoading(true)
      const product = await axios.post("https://ecomm-backend-murex.vercel.app/api/products",{category:selectedCategory,sort:selectedSort,page,lower,higher,brands} )
      console.log(product)
      setProducts(product.data)
+     setLoading(false)
     };
 
     fetchData();
@@ -56,6 +59,9 @@ const ProductListPage = () => {
       setBrands(brands.filter((item) => item !== name));
     }
   };
+  if(loading){
+    return (<Spinner />)
+  }
 
   return (
     <div className='p-5'>

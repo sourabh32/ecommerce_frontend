@@ -7,7 +7,7 @@ const ProductDisplay = ({ products,page,onPageChange }) => {
   return (
     <div>
         {products.length === 0 && <p className="my-5 text-center w-full">No Products to show!</p>}
-      <div className="grid grid-cols-1 my-5 px-1 sm:px-5 gap-4 sm:grid-cols-3">
+      <div className="grid container mx-auto grid-cols-1 my-5 sm:px-5 gap-2 sm:grid-cols-4">
       
         {products.map((product, index) => (
           <ProductCard product={product} key={index} />
