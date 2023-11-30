@@ -1,12 +1,19 @@
+<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
+=======
+import React, { useState } from "react";
+>>>>>>> a8d0f2cf463e45516b6e8a2046503d2f71f9aec4
 import ProductDisplay from "./ProductDisplay";
 import axios from "axios";
 import ProductFilter from "./components/ProductFilter";
 import Spinner from "./components/Spinner";
 import { useQuery } from "@tanstack/react-query";
+<<<<<<< HEAD
 import { fetchCartApi } from "./apis/authQueries";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "./redux/cartSlice";
+=======
+>>>>>>> a8d0f2cf463e45516b6e8a2046503d2f71f9aec4
 
 
 const ProductListPage = () => {
@@ -16,6 +23,7 @@ const ProductListPage = () => {
   const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("mens");
   const [selectedSort, setSelectedSort] = useState("price:asc");
+<<<<<<< HEAD
 const {userInfo} = useSelector(state => state.userReducer)
   const filters = {
     selectedSort,
@@ -29,6 +37,20 @@ const {userInfo} = useSelector(state => state.userReducer)
 
   const fetchData = async () => {
     const res = await axios.post("http://localhost:3000/api/products", {
+=======
+
+  const filters = {
+    selectedSort,
+    selectedCategory,
+    brands,
+    lower,
+    higher,
+    page,
+  };
+
+  const fetchData = async (filters) => {
+    const res = await axios.post("https://ecomm-backend-murex.vercel.app/api/products", {
+>>>>>>> a8d0f2cf463e45516b6e8a2046503d2f71f9aec4
       category: selectedCategory,
       sort: selectedSort,
       page,
@@ -36,6 +58,7 @@ const {userInfo} = useSelector(state => state.userReducer)
       higher,
       brands,
     });
+<<<<<<< HEAD
 
     return res.data;
   };
@@ -49,6 +72,13 @@ const {userInfo} = useSelector(state => state.userReducer)
 useEffect(()=>{
   dispatch(setCart(["hello wo"]))
 },[cartItems])
+=======
+
+    return res.data;
+  };
+
+  const { data: products, isLoading: loading } = useQuery({queryKey:["products",filters],queryFn:fetchData});
+>>>>>>> a8d0f2cf463e45516b6e8a2046503d2f71f9aec4
 
 // dispatch(setCart(cartItems.products));
 // console.log(cartItems.products)
@@ -78,12 +108,15 @@ useEffect(()=>{
   if (loading) {
     return <Spinner />;
   }
+<<<<<<< HEAD
 //   useEffect(()=>{
 //  if(!cartItems.products.length ===0){
 //    dispatch(cartItems(cartItems.products))
 //    console.log("saved")
 //  }
 //   },[cartItems.products])
+=======
+>>>>>>> a8d0f2cf463e45516b6e8a2046503d2f71f9aec4
 
   return (
     <div className="p-5">
